@@ -1,0 +1,196 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EChartsBaseOptions",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "object",
+      "properties": {
+        "text": { "type": "string" },
+        "subtext": { "type": ["string", "null"] },
+        "left": { "type": "string" },
+        "textStyle": {
+          "type": "object",
+          "properties": {
+            "fontSize": { "type": "number" },
+            "fontWeight": { "type": "string" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "tooltip": {
+      "type": "object",
+      "properties": {
+        "trigger": { "type": "string" },
+        "formatter": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "legend": {
+      "type": "object",
+      "properties": {
+        "data": { "type": "array", "items": { "type": "string" } },
+        "orient": { "type": "string" },
+        "left": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "toolbox": {
+      "type": "object",
+      "properties": {
+        "feature": {
+          "type": "object",
+          "properties": {
+            "saveAsImage": { "type": "object" },
+            "dataView": { "type": "object", "properties": { "readOnly": { "type": "boolean" } } },
+            "restore": { "type": "object" },
+            "magicType": { "type": "object", "properties": { "type": { "type": "array", "items": { "type": "string" } } } }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "grid": {
+      "type": "object",
+      "properties": {
+        "left": { "type": "string" },
+        "right": { "type": "string" },
+        "bottom": { "type": "string" },
+        "containLabel": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "xAxis": {
+      "type": "object",
+      "properties": {
+        "type": { "type": "string" },
+        "data": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "yAxis": {
+      "type": "object",
+      "properties": {
+        "type": { "type": "string" },
+        "name": { "type": "string" },
+        "axisLabel": {
+          "type": "object",
+          "properties": { "formatter": { "type": "string" } },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "polar": {
+      "type": "object",
+      "properties": { "radius": { "type": "array", "items": { "type": ["number", "string"] } } },
+      "additionalProperties": false
+    },
+    "radiusAxis": {
+      "type": "object",
+      "properties": { "type": { "type": "string" }, "data": { "type": "array", "items": { "type": "string" } } },
+      "additionalProperties": false
+    },
+    "angleAxis": {
+      "type": "object",
+      "properties": { "startAngle": { "type": "number" } },
+      "additionalProperties": false
+    },
+    "radar": {
+      "type": "object",
+      "properties": {
+        "indicator": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": { "name": { "type": "string" }, "max": { "type": "number" } },
+            "required": ["name", "max"]
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "dataZoom": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "type": { "type": "string" } } }
+    },
+    "visualMap": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "min": { "type": "number" },
+          "max": { "type": "number" },
+          "calculable": { "type": "boolean" },
+          "inRange": { "type": "object", "properties": { "color": { "type": "array", "items": { "type": "string" } } } }
+        }
+      }
+    },
+    "axisPointer": {
+      "type": "object",
+      "properties": { "link": { "type": "array", "items": { "type": "object" } } },
+      "additionalProperties": false
+    },
+    "brush": {
+      "type": "object",
+      "properties": { "toolbox": { "type": "array", "items": { "type": "string" } } },
+      "additionalProperties": false
+    },
+    "geo": {
+      "type": "object",
+      "properties": { "map": { "type": "string" }, "roam": { "type": "boolean" } },
+      "additionalProperties": false
+    },
+    "parallel": {
+      "type": "object",
+      "properties": { "parallelAxisDefault": { "type": "object", "properties": { "type": { "type": "string" } } } },
+      "additionalProperties": false
+    },
+    "parallelAxis": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "dim": { "type": "number" }, "name": { "type": "string" } } }
+    },
+    "singleAxis": {
+      "type": "object",
+      "properties": { "type": { "type": "string" } },
+      "additionalProperties": false
+    },
+    "timeline": {
+      "type": "object",
+      "properties": { "axisType": { "type": "string" }, "data": { "type": "array", "items": { "type": "string" } } },
+      "additionalProperties": false
+    },
+    "calendar": {
+      "type": "object",
+      "properties": { "range": { "type": "string" } },
+      "additionalProperties": false
+    },
+    "dataset": {
+      "type": "object",
+      "properties": { "source": { "type": "array", "items": { "type": ["string", "number"] } } },
+      "additionalProperties": false
+    },
+    "aria": {
+      "type": "object",
+      "properties": { "enabled": { "type": "boolean" } },
+      "additionalProperties": false
+    },
+    "color": { "type": "array", "items": { "type": "string" } },
+    "backgroundColor": { "type": "string" },
+    "textStyle": {
+      "type": "object",
+      "properties": { "fontFamily": { "type": "string" }, "fontSize": { "type": "number" } },
+      "additionalProperties": false
+    },
+    "animation": { "type": "boolean" },
+    "animationDuration": { "type": "number" },
+    "animationEasing": { "type": "string" },
+    "blendMode": { "type": "string" },
+    "useUTC": { "type": "boolean" },
+    "series": { "type": "array", "items": { "type": "object" } }
+  },
+  "additionalProperties": false
+}

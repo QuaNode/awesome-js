@@ -1,0 +1,195 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EChartsDerivativeOptions",
+  "type": "object",
+  "allOf": [{ "$ref": "echarts_base_model.json" }],
+  "$defs": {
+    "barSeries": {
+      "type": "object",
+      "properties": {
+        "type": { "const": "bar" },
+        "barWidth": { "type": "string" },
+        "stack": { "type": "string" },
+        "label": {
+          "type": "object",
+          "properties": { "show": { "type": "boolean" }, "position": { "type": "string" } },
+          "additionalProperties": false
+        },
+        "itemStyle": {
+          "type": "object",
+          "properties": { "color": { "type": "string" } },
+          "additionalProperties": false
+        },
+        "data": { "type": "array", "items": { "type": "number" } }
+      },
+      "required": ["type"],
+      "additionalProperties": false
+    },
+    "lineSeries": {
+      "type": "object",
+      "properties": {
+        "type": { "const": "line" },
+        "smooth": { "type": "boolean" },
+        "showSymbol": { "type": "boolean" },
+        "symbolSize": { "type": "number" },
+        "areaStyle": { "type": "object" },
+        "lineStyle": {
+          "type": "object",
+          "properties": { "width": { "type": "number" }, "type": { "type": "string" } },
+          "additionalProperties": false
+        },
+        "data": { "type": "array", "items": { "type": "number" } }
+      },
+      "required": ["type"],
+      "additionalProperties": false
+    },
+    "pieSeries": {
+      "type": "object",
+      "properties": {
+        "type": { "const": "pie" },
+        "radius": { "type": "string" },
+        "center": { "type": "array", "items": { "type": "string" } },
+        "roseType": { "type": "string" },
+        "label": {
+          "type": "object",
+          "properties": { "show": { "type": "boolean" }, "formatter": { "type": "string" } },
+          "additionalProperties": false
+        },
+        "emphasis": {
+          "type": "object",
+          "properties": {
+            "itemStyle": {
+              "type": "object",
+              "properties": { "shadowBlur": { "type": "number" }, "shadowColor": { "type": "string" } },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": { "value": { "type": "number" }, "name": { "type": "string" } },
+            "required": ["value", "name"]
+          }
+        }
+      },
+      "required": ["type"],
+      "additionalProperties": false
+    },
+    "scatterSeries": {
+      "type": "object",
+      "properties": {
+        "type": { "const": "scatter" },
+        "symbolSize": { "type": "number" },
+        "itemStyle": {
+          "type": "object",
+          "properties": { "color": { "type": "string" } },
+          "additionalProperties": false
+        },
+        "data": { "type": "array", "items": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 } }
+      },
+      "required": ["type"],
+      "additionalProperties": false
+    },
+    "gaugeSeries": {
+      "type": "object",
+      "properties": {
+        "type": { "const": "gauge" },
+        "min": { "type": "number" },
+        "max": { "type": "number" },
+        "progress": {
+          "type": "object",
+          "properties": { "show": { "type": "boolean" }, "width": { "type": "number" } },
+          "additionalProperties": false
+        },
+        "detail": {
+          "type": "object",
+          "properties": { "valueAnimation": { "type": "boolean" }, "formatter": { "type": "string" } },
+          "additionalProperties": false
+        },
+        "axisLine": {
+          "type": "object",
+          "properties": { "lineStyle": { "type": "object", "properties": { "width": { "type": "number" } } } },
+          "additionalProperties": false
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": { "value": { "type": "number" }, "name": { "type": "string" } },
+            "required": ["value"]
+          }
+        }
+      },
+      "required": ["type"],
+      "additionalProperties": false
+    },
+    "radarSeries": {
+      "type": "object",
+      "properties": {
+        "type": { "const": "radar" },
+        "indicator": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": { "name": { "type": "string" }, "max": { "type": "number" } },
+            "required": ["name", "max"]
+          }
+        },
+        "areaStyle": { "type": "object" },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": { "value": { "type": "array", "items": { "type": "number" } }, "name": { "type": "string" } },
+            "required": ["value"]
+          }
+        }
+      },
+      "required": ["type"],
+      "additionalProperties": false
+    },
+    "funnelSeries": {
+      "type": "object",
+      "properties": {
+        "type": { "const": "funnel" },
+        "left": { "type": "string" },
+        "width": { "type": "string" },
+        "label": {
+          "type": "object",
+          "properties": { "show": { "type": "boolean" }, "position": { "type": "string" } },
+          "additionalProperties": false
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": { "value": { "type": "number" }, "name": { "type": "string" } },
+            "required": ["value", "name"]
+          }
+        }
+      },
+      "required": ["type"],
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "series": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          { "$ref": "#/$defs/barSeries" },
+          { "$ref": "#/$defs/lineSeries" },
+          { "$ref": "#/$defs/pieSeries" },
+          { "$ref": "#/$defs/scatterSeries" },
+          { "$ref": "#/$defs/gaugeSeries" },
+          { "$ref": "#/$defs/radarSeries" },
+          { "$ref": "#/$defs/funnelSeries" }
+        ]
+      }
+    }
+  },
+  "additionalProperties": false
+}
